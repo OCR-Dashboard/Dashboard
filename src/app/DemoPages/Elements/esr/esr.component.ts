@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Chart from 'chart.js';
 
 @Component({
   selector: 'app-esr',
@@ -6,10 +7,58 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./esr.component.css']
 })
 export class ESRComponent implements OnInit {
-
+  massPopChart1: any;
   constructor() { }
-
+ 
   ngOnInit() {
+    this.massPopChart1 = new Chart('doughnutChart', {
+      type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea 
+      data:{  
+        labels: ['Running','On Hold','Suspended','Idle','Issue'],    
+      datasets:[{      
+        data: [88,15,30,21,39],
+      //backgroundColor:'green',
+      backgroundColor:[
+        '#f7464a',
+        '#46bfbd',
+       '#fdb45c',
+      '#939eb0',
+       '#4d5360'
+      ],
+      borderWidth:1,
+      borderColor:'#fff',
+      hoverBorderWidth:5,
+      hoverBorderColor:'#fff'
+      }]
+      },
+      options:{
+      title:{
+      display:false,
+      text:'',
+      fontSize:0
+      },
+    
+      legend:{
+      display:false,
+      position:'top',
+      labels:{
+      fontColor:'#000'
+      } 
+      }, 
+      layout:{
+      padding:{
+      left:0,
+      right:0,
+      bottom:0,
+      top:0
+      }
+      },
+      tooltips:{
+      enabled:true
+      }
+      }
+    });
+  
   }
   piedata= {  
     labels: ['P1', 'P2', 'P3'],
@@ -46,7 +95,7 @@ export class ESRComponent implements OnInit {
         data: [23,35,45,58,35],
       },
     ],
-    options: {
+    baroptions: {
       scales: {
           yAxes: [{
               ticks: {
@@ -58,7 +107,7 @@ export class ESRComponent implements OnInit {
   }
 
 
-  Data1 = {  
+  LineData = {  
     labels: ['SUN','MON','TUE','WED','THU','FRI','SAT'],
     datasets: [
       {
@@ -73,7 +122,7 @@ export class ESRComponent implements OnInit {
         data: [12,39,45,80,25,15,12],
       },
       {
-        label: 'Monthly Summary',
+        label: 'Weakly Summary',
         backgroundColor: [
          '#abd7f4'       
         ],
@@ -86,27 +135,47 @@ export class ESRComponent implements OnInit {
     ],  
     
   }
-  Data2= {  
-    datasets: [
-      {
-        label: '',
-        backgroundColor: [
-          '#f7464a',
-            '#46bfbd',
-            '#fdb45c',
-            '#939eb0',
-            '#4d5360'
-        ],
-       
-        borderWidth: 1,
-        data: [88,15,30,21,39],
-      },
-    ],
-  }
+
  
+
+
+//   Data2= {  
+//     labels: ['Running','On Hold','Suspended','Idle','Issue'],
+//     datasets: [
+//       {
+//        label: ['Running','On Hold','Suspended','Idle','Issue'],
+//         backgroundColor: [
+//           '#f7464a',
+//             '#46bfbd',
+//             '#fdb45c',
+//             '#939eb0',
+//             '#4d5360'
+//         ],
+       
+//         borderWidth: 1,
+//         data: [88,15,30,21,39],
+//       },
+//     ],
+//   }
+//   dOptions:{
+//     title:{
+//       display:false,
+//       text:'',
+//       fontSize:0
+//       },
+//       legend:{
+//         display:false,
+//         position:'top',
+//         labels:{
+//         fontColor:'#000'
+//         } 
+//         label:{
+
+//         }
+//   }
+ 
+// }
 }
-
-
 
 
 
